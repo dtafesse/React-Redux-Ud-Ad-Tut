@@ -9,8 +9,16 @@ import App from "./components/App";
 import Welcome from "./components/Welcome";
 import Signup from "./components/auth/Signup";
 
+/* eslint-disable no-underscore-dangle */
+const store = createStore(
+  reducers,
+  {},
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+/* eslint-enable */
+
 ReactDOM.render(
-  <Provider store={createStore(reducers, {})}>
+  <Provider store={store}>
     <BrowserRouter>
       <App>
         <Route path='/' exact component={Welcome} />
