@@ -12,6 +12,7 @@ import Welcome from "./components/Welcome";
 import Signup from "./components/auth/Signup";
 import Feature from "./components/Feature";
 import Signout from "./components/auth/Signout";
+import Signin from "./components/auth/Signin";
 
 const initailState = {
   auth: { authenticated: localStorage.getItem("token") }
@@ -31,6 +32,7 @@ ReactDOM.render(
         <Route path='/signup' component={Signup} />
         <Route path='/feature' component={Feature} />
         <Route path='/signout' component={Signout} />
+        <Route path='/signin' component={Signin} />
       </App>
     </BrowserRouter>
   </Provider>,
