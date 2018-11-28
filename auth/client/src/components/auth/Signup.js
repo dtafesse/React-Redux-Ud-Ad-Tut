@@ -37,17 +37,22 @@ class Signup extends Component {
             autoComplete='none'
           />
         </fieldset>
+        <div>{this.props.errorMessage}</div>
         <button>Sign Up!</button>
       </form>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.errorMessage };
+}
+
 // compose allows one to apply multiple higherorder components
 // to a single component with a better syntax
 export default compose(
   connect(
-    null,
+    mapStateToProps,
     actions
   ),
   reduxForm({ form: "signup" })
