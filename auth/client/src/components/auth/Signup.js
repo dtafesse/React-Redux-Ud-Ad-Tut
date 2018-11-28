@@ -7,8 +7,12 @@ import * as actions from "../../actions";
 class Signup extends Component {
   onSumbit = formProps => {
     // formProms is an obj with email, password
-    // action of signup gets mapped to the props
-    this.props.signup(formProps);
+    // action of signup gets mapped to the props,
+    // also assign a callback function that will be called when
+    // this.props.signup() completes
+    this.props.signup(formProps, () => {
+      this.props.history.push("/feature");
+    });
   };
 
   render() {
