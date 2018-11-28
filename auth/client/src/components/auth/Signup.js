@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 class Signup extends Component {
   onSumbit = formProps => {
-    console.log(formProps);
+    // formProms is an obj with email, password
+    // action of signup gets mapped to the props
+    this.props.signup(formProps);
   };
 
   render() {
@@ -38,4 +43,12 @@ class Signup extends Component {
   }
 }
 
-export default reduxForm({ form: "signup" })(Signup);
+// compose allows one to apply multiple higherorder components
+// to a single component with a better syntax
+export default compose(
+  connect(
+    null,
+    actions
+  ),
+  reduxForm({ form: "signup" })
+)(Signup);
