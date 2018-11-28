@@ -11,10 +11,15 @@ import App from "./components/App";
 import Welcome from "./components/Welcome";
 import Signup from "./components/auth/Signup";
 import Feature from "./components/Feature";
+import Signout from "./components/auth/Signout";
+
+const initailState = {
+  auth: { authenticated: localStorage.getItem("token") }
+};
 
 const store = createStore(
   reducers,
-  {},
+  initailState,
   composeWithDevTools(applyMiddleware(reduxThunk))
 );
 
@@ -25,6 +30,7 @@ ReactDOM.render(
         <Route path='/' exact component={Welcome} />
         <Route path='/signup' component={Signup} />
         <Route path='/feature' component={Feature} />
+        <Route path='/signout' component={Signout} />
       </App>
     </BrowserRouter>
   </Provider>,

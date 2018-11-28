@@ -8,8 +8,18 @@ export const signup = ({ email, password }, callback) => async dispatch => {
       password
     });
     dispatch({ type: AUTH_USER, payload: response.data.token });
+    localStorage.setItem("token", response.data.token);
     callback();
   } catch (e) {
     dispatch({ type: AUTH_ERROR, payload: "Email is in use" });
   }
+};
+
+export const signout = () => {
+  localStorage.removeItem("token");
+
+  return {
+    type: AUTH_USER,
+    payload: ""
+  };
 };
